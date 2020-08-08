@@ -9,7 +9,8 @@
 
   <!-- link CDN tailwind  -->
   <link rel="stylesheet" type="text/css" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
-
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
   <style>
     .mb-5 {
       margin-bottom: 0.5rem
@@ -30,10 +31,10 @@
     </div>
 
     <div class="mb-5 text-center">
-      <input class="border border-blue-300 border-opacity-75 rounded-l-lg shadow-xl bg-white-200 w-300 px-4 py-2"
-        type="text" placeholder="search..." v-model="kataKunci" />
+      <input class="border border-blue-300 border-opacity-75 rounded-l-lg shadow-xl bg-white-200 px-4 py-2" type="text"
+        placeholder="search..." v-model="kataKunci" />
       <button class="font-medium text-gray-70 text-center bg-blue-500 bg-opacity-75 rounded-r-lg shadow-xl px-4 py-2"
-        @click="bersihkan">Bersihkan</button>
+        @click="bersihkan"><i class="fas fa-eraser"></i></button>
     </div>
 
     <div class="font-medium m-12">
