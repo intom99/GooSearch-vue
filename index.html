@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>GooSearch - Vuejs</title>
+
+  <!-- link CDN tailwind  -->
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
+
+  <style>
+    .mb-5 {
+      margin-bottom: 0.5rem
+    }
+
+    .mb-3 {
+      margin-bottom: 0.3rem
+    }
+  </style>
+</head>
+
+<body class="bg-blue-100">
+  <div id="app" class="container mx-auto px-4">
+
+    <div class="mb-5 text-center m-16 box-content">
+      <h1 class="text-base xl:text-6xl text-4xl font-mono font-extrabold tracking-wider text-blue-500">GooSearch</h1>
+      <input class="bg-blue-100 h-10" type="text" v-model="url" />
+    </div>
+
+    <div class="mb-5 text-center">
+      <input class="border border-blue-300 border-opacity-75 rounded-l-lg shadow-xl bg-white-200 w-300 px-4 py-2"
+        type="text" placeholder="search..." v-model="kataKunci" />
+      <button class="font-medium text-gray-70 text-center bg-blue-500 bg-opacity-75 rounded-r-lg shadow-xl px-4 py-2"
+        @click="bersihkan">Bersihkan</button>
+    </div>
+
+    <div class="font-medium m-12">
+      <div class="total mb-5">Total Hasil : {{ paginasi.total }}</div>
+      <div class="halaman mb-5">Halaman ke : {{ paginasi.page }}</div>
+      <hr>
+    </div>
+
+
+    <div class="mx-12 overflow-y-auto box-content">
+      <ul class="daftar leading-loose">
+        <li v-for="(hasil, i) in daftarHasil" :key="i" class="mb-3">
+          <span v-html="hasil.text"></span>
+          <a :href="`${url}&t=${hasil.start}s`" target="_blank" class="font-medium italic bg-red-500 bg-opacity-25 p-1"
+            title="click here">Youtube</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="mb-5 text-center lg:p-16 p-12 box-content">
+      <button
+        class="shadow-xl font-medium text-gray-70 text-center bg-blue-500 bg-opacity-75 rounded-l-lg h-10 lg:w-20 w-12"
+        @click="navigasi('first')" :disabled="!paginasi['first']">
+        First
+      </button>
+      <button class="shadow-xl font-medium text-gray-70 text-center bg-blue-500 bg-opacity-75 h-10 lg:w-20 w-12"
+        @click="navigasi('prev')" :disabled="!paginasi['prev']">
+        Prev
+      </button>
+      <button class="shadow-xl font-medium text-gray-70 text-center bg-blue-500 bg-opacity-75 h-10 lg:w-20 w-12"
+        @click="navigasi('next')" :disabled="!paginasi['next']">
+        Next
+      </button>
+      <button
+        class="shadow-xl font-medium text-gray-70 text-center bg-blue-500 bg-opacity-75 rounded-r-lg h-10 lg:w-20 w-12"
+        @click="navigasi('last')" :disabled="!paginasi['last']">
+        Last
+      </button>
+    </div>
+
+
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="assets/index.js"></script>
+  <script src="assets/appVue.js"></script>
+</body>
+
+</html>
